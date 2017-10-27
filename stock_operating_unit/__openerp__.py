@@ -10,6 +10,7 @@
         company",
     "version": "8.0.1.0.0",
     "category": "Generic Modules/Sales & Purchases",
+    "license": "AGPL-3",
     "author": "Eficent, Serpent Consulting Services Pvt. Ltd., "
               "Odoo Community Association (OCA)",
     "website": "http://www.eficent.com",
