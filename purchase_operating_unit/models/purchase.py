@@ -15,7 +15,7 @@ class PurchaseOrder(models.Model):
         res = super(PurchaseOrder, self)._get_picking_in()
         type_obj = self.env['stock.picking.type']
         operating_unit = self.env['res.users'].operating_unit_default_get(
-                self._uid)
+            self._uid)
         types = type_obj.search([('code', '=', 'incoming'),
                                  ('warehouse_id.operating_unit_id', '=',
                                   operating_unit.id)])
@@ -38,7 +38,7 @@ class PurchaseOrder(models.Model):
                                            "of incoming shipment",
                                       required=True,
                                       states={'confirmed':
-                                                  [('readonly', True)],
+                                              [('readonly', True)],
                                               'approved': [('readonly', True)],
                                               'done': [('readonly', True)]},
                                       default=_get_picking_in)
