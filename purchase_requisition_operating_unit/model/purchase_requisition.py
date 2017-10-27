@@ -1,26 +1,12 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (C) 2015 Eficent (<http://www.eficent.com/>)
-#              <contact@eficent.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2015 Eficent Business and IT Consulting Services S.L. -
+# Jordi Ballester Alomar
+# © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
 from openerp import fields, models, api
 from openerp.tools.translate import _
-from openerp.exceptions import Warning
+from openerp.exceptions import Warning as UserError
 
 
 class PurchaseRequisition(models.Model):
@@ -32,7 +18,7 @@ class PurchaseRequisition(models.Model):
         res = super(PurchaseRequisition, self)._get_picking_in()
         type_obj = self.env['stock.picking.type']
         operating_unit = self.env['res.users'].operating_unit_default_get(
-                self._uid)
+            self._uid)
         types = type_obj.search([('code', '=', 'incoming'),
                                  ('warehouse_id.operating_unit_id', '=',
                                   operating_unit.id)])
@@ -56,15 +42,13 @@ class PurchaseRequisition(models.Model):
         default=_get_picking_in,
     )
 
-    @api.one
     @api.constrains('operating_unit_id', 'company_id')
     def _check_company_operating_unit(self):
         if self.company_id and self.operating_unit_id and \
                 self.company_id != self.operating_unit_id.company_id:
-            raise Warning(_('The Company in the Purchase Requisition and in '
-                            'the Operating Unit must be the same.'))
+            raise UserError(_('The Company in the Purchase Requisition and in '
+                              'the Operating Unit must be the same.'))
 
-    @api.one
     @api.constrains('operating_unit_id', 'picking_type_id')
     def _check_warehouse_operating_unit(self):
         picking_type = self.picking_type_id
@@ -74,7 +58,7 @@ class PurchaseRequisition(models.Model):
                     and self.operating_unit_id and\
                     picking_type.warehouse_id.operating_unit_id !=\
                     self.operating_unit_id:
-                raise Warning(_('Configuration error!\nThe\
+                raise UserError(_('Configuration error!\nThe\
                 Purchase Requisition and the Warehouse of picking type\
                 must belong to the same Operating Unit.'))
 
@@ -88,9 +72,9 @@ class PurchaseRequisition(models.Model):
             if types:
                 self.picking_type_id = types[:1]
             else:
-                raise Warning(_("No Warehouse found with the "
-                                "Operating Unit indicated in the "
-                                "Purchase Requisition!"))
+                raise UserError(_("No Warehouse found with the "
+                                  "Operating Unit indicated in the "
+                                  "Purchase Requisition!"))
 
     @api.model
     def _prepare_purchase_order(self, requisition, supplier):
