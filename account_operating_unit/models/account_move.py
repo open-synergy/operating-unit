@@ -44,11 +44,11 @@ class AccountMoveLine(models.Model):
     @api.one
     @api.constrains('operating_unit_id', 'move_id')
     def _check_move_operating_unit(self):
-            if self.move_id and self.move_id.operating_unit_id and \
-                            self.operating_unit_id and \
-                            self.move_id.operating_unit_id != \
-                            self.operating_unit_id:
-                raise Warning(_('Configuration error!\nThe Operating Unit in\
+        if self.move_id and self.move_id.operating_unit_id and \
+                self.operating_unit_id and \
+                self.move_id.operating_unit_id != \
+                self.operating_unit_id:
+            raise Warning(_('Configuration error!\nThe Operating Unit in\
                 the Move Line and in the Move must be the same.'))
 
 
@@ -56,10 +56,10 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     operating_unit_id = fields.Many2one('operating.unit',
-                                             'Default Operating Unit',
-                                             help="This operating unit will "
-                                                  "be defaulted in the move "
-                                                  "lines.")
+                                        'Default Operating Unit',
+                                        help="This operating unit will "
+                                        "be defaulted in the move "
+                                        "lines.")
 
     @api.multi
     def _prepare_inter_ou_balancing_move_line(self, move, ou_id,
@@ -119,7 +119,7 @@ class AccountMove(models.Model):
                 # Create a balancing move line in the operating unit
                 # clearing account
                 line_data = self._prepare_inter_ou_balancing_move_line(
-                                    move, ou_id, ou_balances)
+                    move, ou_id, ou_balances)
                 if line_data:
                     lid = ml_obj.create(line_data)
                     move.write({'line_id': [(4, lid)]})
