@@ -20,5 +20,4 @@
         "security/sale_security.xml",
     ],
     'installable': True,
-    'active': False,
 }

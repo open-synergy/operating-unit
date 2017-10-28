@@ -3,7 +3,6 @@
 # Jordi Ballester Alomar
 # © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from openerp import netsvc
 from openerp.tests import common
 
 
@@ -112,10 +111,10 @@ class TestSaleOperatingUnit(common.TransactionCase):
         """Test Sale Operating Unit"""
         # User 2 is only assigned to Operating Unit B2C, and cannot
         # Access Sales order from Main Operating Unit.
-        sale = self.sale_model.sudo(self.user2.id).search(
-                                          [('id', '=', self.sale1.id),
-                                           ('operating_unit_id', '=',
-                                           self.ou1.id)])
+        sale = self.sale_model.sudo(self.user2.id).search([
+            ('id', '=', self.sale1.id),
+            ('operating_unit_id', '=', self.ou1.id)
+            ])
         self.assertEqual(sale.ids, [], 'User 2 should not have access to '
                                        'OU %s' % self.ou1.name)
         # Confirm Sale1
@@ -123,8 +122,8 @@ class TestSaleOperatingUnit(common.TransactionCase):
         # Confirm Sale2
         b2c_invoice_id = self._confirm_sale(self.sale2)
         # Checks that invoice has OU b2c
-        b2c = self.acc_invoice_model.sudo(self.user2.id).search(
-                                         [('id', '=', b2c_invoice_id),
-                                          ('operating_unit_id', '=',
-                                           self.b2c.id)])
+        b2c = self.acc_invoice_model.sudo(self.user2.id).search([
+            ('id', '=', b2c_invoice_id),
+            ('operating_unit_id', '=', self.b2c.id)
+            ])
         self.assertNotEqual(b2c.ids, [], 'Invoice should have b2c OU')
