@@ -13,18 +13,12 @@
               "Odoo Community Association (OCA)",
     "website": "http://www.eficent.com",
     "category": "Sales Management",
+    "license": "AGPL-3",
     "depends": [
         "sale_stock",
         "sale_operating_unit",
         "stock_operating_unit",
     ],
-    "description": """
-Operating Unit in Sales Stock
-=============================
-This module prevents a user from selecting a Warehouse in the Sale Shop
-that does not belong to the same operating unit.
-    """,
     "data": [],
     'installable': True,
-    'active': False,
 }

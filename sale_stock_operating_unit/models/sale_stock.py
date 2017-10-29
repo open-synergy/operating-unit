@@ -4,6 +4,8 @@
 # © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from openerp import api, models
+from openerp.exceptions import Warning as UserError
+from openerp.tools.translate import _
 
 
 class StockMove(models.Model):
@@ -32,8 +34,8 @@ class SaleOrder(models.Model):
     def _check_wh_operating_unit(self):
         for rec in self:
             if rec.operating_unit_id and\
-                    rec.operating_unit_id != \
-                            rec.warehouse_id.operating_unit_id:
-                raise ValidationError(_('Configuration error!\nThe Operating'
-                                        'Unit in the Sales Order and in the'
-                                        ' Warehouse must be the same.'))
+                rec.operating_unit_id != \
+                    rec.warehouse_id.operating_unit_id:
+                raise UserError(_('Configuration error!\nThe Operating'
+                                  'Unit in the Sales Order and in the'
+                                  ' Warehouse must be the same.'))
