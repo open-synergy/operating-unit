@@ -4,7 +4,7 @@
 # © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
-from openerp.exceptions import Warning
+from openerp.exceptions import Warning as UserError
 from openerp.tools.translate import _
 
 
@@ -23,5 +23,5 @@ class CRMLead(models.Model):
         if self.company_id and \
                 self.operating_unit_id and \
                 self.company_id != self.operating_unit_id.company_id:
-            raise Warning(_('Configuration error!\nThe Company in the\
+            raise UserError(_('Configuration error!\nThe Company in the\
         CRM Lead and in the Operating Unit must be the same.'))

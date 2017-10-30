@@ -4,7 +4,6 @@
 # © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from openerp.tests import common
-from openerp import netsvc
 
 
 class TestPurchaseOperatingUnit(common.TransactionCase):
@@ -62,7 +61,7 @@ class TestPurchaseOperatingUnit(common.TransactionCase):
         # User 2 is only assigned to B2C Operating Unit, and cannot
         # access CRM leads for Main Operating Unit.
         lead = self.crm_lead_model.sudo(self.user2.id).\
-                search([('id', '=', self.lead1.id),
-                        ('operating_unit_id', '=', self.ou1.id)])
+            search([('id', '=', self.lead1.id),
+                    ('operating_unit_id', '=', self.ou1.id)])
         self.assertEqual(lead.ids, [], 'User 2 should not have access to '
                                        'OU %s' % self.ou1.name)

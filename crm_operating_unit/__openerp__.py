@@ -14,15 +14,9 @@
     "website": "http://www.eficent.com",
     "category": "Purchase Management",
     "depends": ["crm", "operating_unit"],
-    "description": """
-Operating Unit in CRM
-=====================
-This module introduces the operating unit to CRM
-    """,
     "data": [
         "views/crm_lead_view.xml",
         "security/crm_security.xml",
     ],
     'installable': True,
-    'active': False,
 }
