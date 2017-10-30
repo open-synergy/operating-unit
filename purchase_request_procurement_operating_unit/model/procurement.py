@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # © 2016 Eficent Business and IT Consulting Services S.L.
 # © 2016 Serpent Consulting Services Pvt. Ltd.
-# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
 from openerp import models, api, _
+from openerp.exceptions import Warning as UserError
 
 
 class Procurement(models.Model):
@@ -26,9 +27,9 @@ class Procurement(models.Model):
             if rec.request_id and rec.location_id.operating_unit_id and \
                     rec.request_id.operating_unit_id != \
                     rec.location_id.operating_unit_id:
-                raise Warning(_('The Purchase Request and the Procurement '
-                                'Order must belong to the same Operating'
-                                'Unit.'))
+                raise UserError(_('The Purchase Request and the Procurement '
+                                  'Order must belong to the same Operating'
+                                  'Unit.'))
 
     @api.multi
     @api.constrains('location_id', 'warehouse_id')
@@ -37,5 +38,6 @@ class Procurement(models.Model):
             if rec.warehouse_id and rec.location_id.operating_unit_id and \
                     rec.warehouse_id.operating_unit_id != \
                     rec.location_id.operating_unit_id:
-                raise Warning(_('Warehouse and location of procurement order '
-                                'must belong to the same Operating Unit.'))
+                raise UserError(_('Warehouse and location of procurement '
+                                  'order must belong to the same '
+                                  ' Operating Unit.'))

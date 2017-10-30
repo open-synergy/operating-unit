@@ -1,6 +1,6 @@
-.. image:: https://img.shields.io/badge/license-LGPLv3-blue.svg
-   :target: https://www.gnu.org/licenses/lgpl.html
-   :alt: License: LGPL-3
+.. image:: https://img.shields.io/badge/license-AGPLv3-blue.svg
+   :target: https://www.gnu.org/licenses/agpl.html
+   :alt: License: AGPL-3
 
 =================================================
 Purchase Request Procurement with Operating Units
@@ -16,7 +16,7 @@ Usage
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/213/9.0
+   :target: https://runbot.odoo-community.org/runbot/213/8.0
 
 Bug Tracker
 ===========
