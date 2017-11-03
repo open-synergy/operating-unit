@@ -1,1 +1,2 @@
 purchase-workflow https://github.com/oca/purchase-workflow 8.0
+manufacture https://github.com/oca/manufacture 8.0
