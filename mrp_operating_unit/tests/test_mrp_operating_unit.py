@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# © 2015 Eficent Business and IT Consulting Services S.L. -
+# Jordi Ballester Alomar
+# © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from openerp.tests import common
 
 
@@ -17,7 +22,8 @@ class TestMrpOperatingUnit(common.TransactionCase):
         # Main Operating Unit
         self.ou1 = self.env.ref('operating_unit.main_operating_unit')
         # Chicago Operating Unit
-        self.chicago = self.env.ref('stock_operating_unit.operating_unit_shop0')
+        self.chicago = self.env.ref(
+            'stock_operating_unit.operating_unit_shop0')
 
         # Groups
         self.grp_mrp_saleman = self.env.ref('base.group_sale_salesman')
@@ -36,7 +42,6 @@ class TestMrpOperatingUnit(common.TransactionCase):
         self.mrp_record1 = self._create_mrp('Manufacturing Order 1', self.ou1)
         self.mrp_record2 = self._create_mrp('Manufacturing Order 2',
                                             self.chicago, self.stock_location)
-
 
     def _create_user(self, login, groups, company, operating_units,
                      context=None):
@@ -69,7 +74,7 @@ class TestMrpOperatingUnit(common.TransactionCase):
                 'product_qty': '10.0',
                 'product_uom': product_uom,
                 'operating_unit_id': operating_unit.id,
-                })
+            })
         else:
             mrp = self.mrp_production_model.create({
                 'name': name,
@@ -80,13 +85,13 @@ class TestMrpOperatingUnit(common.TransactionCase):
                 'operating_unit_id': operating_unit.id,
                 'location_src_id': stock_location.id,
                 'location_dest_id': stock_location.id
-                })
+            })
         return mrp
 
     def test_mrp_ou(self):
         record = self.mrp_production_model.sudo(self.user2.id).search(
-                                          [('id', '=', self.mrp_record1.id),
-                                           ('operating_unit_id', '=',
-                                           self.ou1.id)])
+            [('id', '=', self.mrp_record1.id),
+             ('operating_unit_id', '=',
+              self.ou1.id)])
         self.assertEqual(record.ids, [], 'User 2 should not have access to '
-                                       'OU : %s' % self.ou1.name)
+                         'OU : %s' % self.ou1.name)
