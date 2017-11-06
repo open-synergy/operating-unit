@@ -60,6 +60,7 @@ Contributors
 
 * Eficent <contact@eficent.com>
 * Serpent Consulting Services Pvt. Ltd. <support@serpentcs.com>
+* OpenSynergy Indonesia <https://opensynergy-indonesia.com>
 
 Maintainer
 ----------

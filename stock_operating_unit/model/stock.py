@@ -142,3 +142,27 @@ class StockMove(models.Model):
         fields.Many2one('operating.unit',
                         related='location_dest_id.operating_unit_id',
                         string='Dest. Location Operating Unit', readonly=True)
+
+
+class StockInventory(models.Model):
+    _inherit = "stock.inventory"
+
+    operating_unit_id = fields.Many2one(
+        comodel_name="operating.unit",
+        string="Operating Unit",
+        default=lambda self:
+        self.env["res.users"].
+        operating_unit_default_get(self._uid),
+    )
+
+
+class StockInventoryLine(models.Model):
+    _inherit = "stock.inventory.line"
+
+    operating_unit_id = fields.Many2one(
+        comodel_name="operating.unit",
+        string="Operating Unit",
+        related="inventory_id.operating_unit_id",
+        readonly=True,
+        store=True,
+    )

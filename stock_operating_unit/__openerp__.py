@@ -8,7 +8,7 @@
     "name": "Stock with Operating Units",
     "summary": "An operating unit (OU) is an organizational entity part of a\
         company",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.1.0",
     "category": "Generic Modules/Sales & Purchases",
     "license": "AGPL-3",
     "author": "Eficent, Serpent Consulting Services Pvt. Ltd., "
@@ -19,6 +19,7 @@
         "security/stock_security.xml",
         "data/stock_data.xml",
         "view/stock.xml",
+        "view/stock_inventory_views.xml",
     ],
     "demo": [
         "demo/stock_demo.xml",
