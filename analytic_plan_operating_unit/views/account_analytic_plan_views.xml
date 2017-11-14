@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0) -->
+<openerp>
+    <data>
+
+        <record id="account_analytic_plan_view_form" model="ir.ui.view">
+            <field name="name">analytic.analytic.plan.form</field>
+            <field name="model">account.analytic.plan</field>
+            <field name="inherit_id"
+                   ref="account_analytic_plans.account_analytic_plan_form"/>
+            <field name="arch" type="xml">
+                <field name="default_instance_id" position="after">
+                    <field name="operating_unit_ids" widget="many2many_tags" groups="operating_unit.group_multi_operating_unit"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
