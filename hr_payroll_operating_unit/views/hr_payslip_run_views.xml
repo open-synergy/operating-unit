@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="hr_payslip_run_view_form" model="ir.ui.view">
+            <field name="name">Inherit : Operating Unit Form</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='credit_note']" position="after">
+                    <field name="operating_unit_id"
+                        groups="operating_unit.group_multi_operating_unit"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_payslip_run_view_tree" model="ir.ui.view">
+            <field name="name">Inherit : Operating Unit Tree</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='credit_note']" position="after">
+                    <field name="operating_unit_id"
+                        groups="operating_unit.group_multi_operating_unit"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
