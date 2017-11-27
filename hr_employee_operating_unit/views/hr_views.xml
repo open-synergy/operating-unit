@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<odoo>
-
+<openerp>
+  <data>
         <!-- Inherited Form view-->
         <record id="hr_emp_view_form" model="ir.ui.view">
             <field name="name">hr.employee.view.form</field>
@@ -13,10 +13,12 @@
                         <field name="operating_unit_ids"
                                domain="[('company_id', '=', company_id)]"
                                widget="many2many_tags"
-                               options="{'no_create': True}" />
+                               options="{'no_create': True}"
+                               groups="operating_unit.group_multi_operating_unit"/>
                     </xpath>
                 </data>
             </field>
         </record>
 
-</odoo>
+  </data>
+</openerp>

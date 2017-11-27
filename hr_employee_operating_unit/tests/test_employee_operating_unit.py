@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2017 Genweb2 Limited - Matiar Rahman
-# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
-from odoo.tests import common
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+from openerp.tests import common
 
 
 class TestEmployeeOperatingUnit(common.TransactionCase):
@@ -11,7 +11,7 @@ class TestEmployeeOperatingUnit(common.TransactionCase):
         self.res_users_model = self.env['res.users']
         self.hr_employee_model = self.env['hr.employee']
         # Groups
-        self.hr_officer = self.env.ref('hr.group_hr_user')
+        self.hr_officer = self.env.ref('base.group_hr_user')
         self.grp_user = self.env.ref('base.group_user')
         # Company
         self.company = self.env.ref('base.main_company')

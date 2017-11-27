@@ -2,9 +2,9 @@
    :target: https://www.gnu.org/licenses/lgpl.html
    :alt: License: LGPL-3
 
-=========================
+================================
 HR Employee with Operating Units
-=========================
+================================
 
 This module introduces the following features:
 
@@ -42,6 +42,7 @@ Contributors
 ------------
 
 * Matiar Rahman <matiar.rahman@gmail.com>
+* OpenSynergy Indonesia <https://opensynergy-indonesia.com>
 
 Maintainer
 ----------
