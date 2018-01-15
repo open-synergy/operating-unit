@@ -1,2 +1,3 @@
 purchase-workflow https://github.com/oca/purchase-workflow 8.0
 manufacture https://github.com/oca/manufacture 8.0
+opnsynid-account-voucher https://github.com/open-synergy/opnsynid-account-voucher 8.0

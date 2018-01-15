@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_voucher_common_view_form" model="ir.ui.view">
+            <field name="name">Inherit : Account Voucher Common Operating Unit Form</field>
+            <field name="model">account.voucher_common</field>
+            <field name="inherit_id" ref="account_voucher_common.account_voucher_common_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="operating_unit_id"
+                        groups="operating_unit.group_multi_operating_unit"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="account_voucher_common_view_tree" model="ir.ui.view">
+            <field name="name">Inherit : Account Voucher Common Operating Unit Tree</field>
+            <field name="model">account.voucher_common</field>
+            <field name="inherit_id" ref="account_voucher_common.account_voucher_common_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="operating_unit_id"
+                        groups="operating_unit.group_multi_operating_unit"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
