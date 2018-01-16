@@ -14,9 +14,7 @@ class AccountVoucherCommon(models.Model):
 
     @api.onchange(
         "journal_id")
-    def onchange_journal(self):
-        res = super(AccountVoucherCommon, self).onchange_journal()
-
+    def onchange_ou_id(self):
         journal = self.journal_id
         ou = journal.operating_unit_id
 
@@ -26,7 +24,6 @@ class AccountVoucherCommon(models.Model):
             self.operating_unit_id = ou_user.id
         else:
             self.operating_unit_id = ou.id
-        return res
 
     @api.multi
     def _prepare_account_move(self):

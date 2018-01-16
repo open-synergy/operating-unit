@@ -14,7 +14,6 @@
         "account_operating_unit"
     ],
     "data": [
-        "security/account_voucher_common_security.xml",
         "views/account_voucher_common_views.xml"
     ],
     'installable': True,
