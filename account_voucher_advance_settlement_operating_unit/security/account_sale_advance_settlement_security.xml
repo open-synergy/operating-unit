@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="ir_rule_account_sale_advance_settlement_allowed_operating_units" model="ir.rule">
+            <field name="model_id" ref="account_voucher_advance_settlement.model_account_sale_advance_settlement"/>
+            <field name="domain_force">['|', ('operating_unit_id','=',False), ('operating_unit_id','in',[g.id for g in user.operating_unit_ids])]</field>
+            <field name="name">Sale Advance Settlement from allowed operating units</field>
+            <field name="global" eval="True"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_create"/>
+        </record>
+
+        <record id="ir_rule_account_sale_advance_settlement_line_allowed_operating_units" model="ir.rule">
+            <field name="model_id" ref="account_voucher_advance_settlement.model_account_sale_advance_settlement_line"/>
+            <field name="domain_force">['|', ('voucher_id.operating_unit_id','=',False), ('voucher_id.operating_unit_id','in',[g.id for g in user.operating_unit_ids])]</field>
+            <field name="name">Sale Advance Settlement lines from allowed operating units</field>
+            <field name="global" eval="True"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_create"/>
+        </record>
+
+        <record id="ir_rule_account_sale_advance_settlement_line_tax_allowed_operating_units" model="ir.rule">
+            <field name="model_id" ref="account_voucher_advance_settlement.model_account_sale_advance_settlement_line_tax"/>
+            <field name="domain_force">['|', ('voucher_line_id.voucher_id.operating_unit_id','=',False), ('voucher_line_id.voucher_id.operating_unit_id','in',[g.id for g in user.operating_unit_ids])]</field>
+            <field name="name">Sale Advance Settlement lines tax from allowed operating units</field>
+            <field name="global" eval="True"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_create"/>
+        </record>
+    </data>
+</openerp>
