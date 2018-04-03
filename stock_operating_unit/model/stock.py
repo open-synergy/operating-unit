@@ -93,11 +93,11 @@ class StockLocation(models.Model):
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
-    operating_unit_id = fields.Many2one('operating.unit',
-                                        'Requesting Operating Unit',
-                                        default=lambda self:
-                                        self.env['res.users'].
-                                        operating_unit_default_get(self._uid))
+    operating_unit_id = fields.Many2one(
+        'operating.unit',
+        'Requesting Operating Unit',
+        related='picking_type_id.warehouse_id.operating_unit_id',
+        )
 
     @api.multi
     @api.constrains('operating_unit_id', 'company_id')
