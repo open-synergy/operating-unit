@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="pos_order_summary_by_product_view_tree" model="ir.ui.view">
+            <field name="name">pos.order_summary_by_product Tree</field>
+            <field name="model">pos.order_summary_by_product</field>
+            <field name="inherit_id" ref="pos_order_summary.pos_order_summary_by_product_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_order']" position="before">
+                    <field name="operating_unit_id"
+                        groups="operating_unit.group_multi_operating_unit"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
