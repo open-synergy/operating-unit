@@ -5,7 +5,7 @@
 
 {
     "name": "Operating Unit in Account Voucher",
-    "version": "8.0.1.1.0",
+    "version": "8.0.1.2.0",
     "author": "OpenSynergy Indonesia",
     "license": "AGPL-3",
     "website": "https://opensynergy-indonesia.com",
