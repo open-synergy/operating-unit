@@ -3,3 +3,4 @@ manufacture https://github.com/oca/manufacture 8.0
 opnsynid-account-voucher https://github.com/open-synergy/opnsynid-account-voucher 8.0
 opnsynid-stock-logistics-workflow https://github.com/open-synergy/opnsynid-stock-logistics-workflow 8.0
 opnsynid-pos https://github.com/open-synergy/opnsynid-pos 8.0
+opnsynid-sale-workflow https://github.com/open-synergy/opnsynid-sale-workflow 8.0
